@@ -72,12 +72,12 @@ export default function ResultadoClient() {
                 <Typography variant="h5" sx={{ p: 1, mb: 1 }}>
                     ¡{nombre}! 😄 Tu resultado es:
                 </Typography>
-                <Typography variant="h6" color="secondary">{descripcionFinal}</Typography>
+                <Typography variant="h6" color="secondary" sx={{ textAlign: "justify", mt: 2 }} >{descripcionFinal}.</Typography>
 
-                <Typography variant="h6" sx={{ my: 3 }}>Tus aptitudes destacadas:</Typography>
+                <Typography variant="h6" sx={{ mt: 4, mb: 1, textAlign: "start" }}>Tus aptitudes destacadas:</Typography>
                 <Grid container spacing={2} justifyContent="center">
                     {aptitudesSeleccionadas.map((aptitud, index) => (
-                        <Grid item xs={12} sm={6} key={index}>
+                        <Grid item xs={12} sm={6} md={4} key={index}>
                             <Paper elevation={4} sx={{ p: 1, textAlign: "start", fontWeight: "bold" }}>
                                 🔹 {capitalizar(aptitud.replace(/_/g, " ").replace(/([a-z])([A-Z])/g, "$1 $2"))}
                             </Paper>
@@ -85,12 +85,12 @@ export default function ResultadoClient() {
                     ))}
                 </Grid>
 
-                <Typography variant="h6" sx={{ my: 3 }}>Elementos químicos encontrados en tu nombre:</Typography>
+                <Typography variant="h6" sx={{ mt: 4, mb: 1, textAlign: "start" }}>Elementos químicos encontrados en tu nombre:</Typography>
                 <Grid container spacing={2} justifyContent="center">
                     {elementosQuimicos.length > 0 ? (
                         elementosQuimicos.map((elemento, index) => (
-                            <Grid item xs={12} sm={6} key={index}>
-                                <Paper elevation={4} sx={{ p: 1, textAlign: "start", fontWeight: "bold" }}>
+                            <Grid item xs={12} key={index}>
+                                <Paper elevation={4} sx={{ px: 1, py: 1, textAlign: "start", fontWeight: "bold" }}>
                                     ⚛️ {elemento}
                                 </Paper>
                             </Grid>

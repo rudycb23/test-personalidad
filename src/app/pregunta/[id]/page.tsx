@@ -4,15 +4,17 @@ import Pregunta from "@/app/components/PreguntaCliente";
 import { preguntas } from "@/data/preguntas_respuestas";
 
 interface PreguntaPageProps {
-    params: { id: string };
+    params: Promise<{ id: string }>;
 }
 
-export default function PreguntaPage({ params }: PreguntaPageProps) {
+export default async function PreguntaPage({ params }: PreguntaPageProps) {
+    const { id } = await params;
     const cantidadPreguntas = preguntas.length;
+    const preguntaActual = Number(id);
 
-    if (!esNumeroValido(params.id, cantidadPreguntas)) {
+    if (isNaN(preguntaActual) || !esNumeroValido(preguntaActual, cantidadPreguntas)) {
         redirect("/resultado");
     }
 
-    return <Pregunta preguntaActual={parseInt(params.id)} />;
+    return <Pregunta preguntaActual={preguntaActual} />;
 }
